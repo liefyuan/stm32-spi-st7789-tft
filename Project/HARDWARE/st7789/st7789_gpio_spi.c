@@ -123,15 +123,13 @@ void gpio_spi_clear(uint16_t color)
 	
     GPIO_SPI_CS_CLR;
     GPIO_SPI_DC_SET;
-	GPIO_ResetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√µÕ£¨µ∆¡¡
 	for(row = 0;row < ST7789_LCD_WIDTH; row++)             //ROW loop
 	{
 		for(column = 0;column < ST7789_LCD_HEIGHT; column++) //column loop
 		{
-			gpio_spi_write_16bit_data(color); // 180ms 1 frame
+			gpio_spi_write_16bit_data(color);
 		}
 	}
-	GPIO_SetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√∏ﬂ£¨µ∆√
 	GPIO_SPI_CS_SET;
 }
 

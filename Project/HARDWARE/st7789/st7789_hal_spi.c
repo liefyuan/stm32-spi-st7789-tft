@@ -175,15 +175,13 @@ void hal_spi_clear(uint16_t color)
 	
     HAL_SPI_CS_CLR;
     HAL_SPI_DC_SET;
-	GPIO_ResetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√µÕ£¨µ∆¡¡
 	for(row = 0;row < LCD_WIDTH; row++)             //ROW loop
 	{
 		for(column = 0;column < LCD_HEIGHT; column++) //column loop
 		{
-			hal_spi_write_16bit_data(color); // 180ms 1 frame
+			hal_spi_write_16bit_data(color); 
 		}
 	}
-	GPIO_SetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√∏ﬂ£¨µ∆√
 	HAL_SPI_CS_SET;
 }
 

@@ -112,18 +112,12 @@ void dma_hal_spi_clear(uint16_t color)
     }
 	
 	hal_spi_setregion(0, 0, LCD_WIDTH, LCD_HEIGHT);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√µÕ£¨µ∆¡¡
 	for(i = 0; i < 16/*(SCREEN_SIZE/DMA_SPI_BUF_SIZE)*/; i++)
 	{
-		SPI_I2S_DMACmd(SPI2, SPI_I2S_DMAReq_Tx, ENABLE); // 60ms 1 frame
-		
-		//GPIO_ResetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√µÕ£¨µ∆¡¡
+		SPI_I2S_DMACmd(SPI2, SPI_I2S_DMAReq_Tx, ENABLE); 
 		
 		DMA_Write_buf(DMA_SPI_BUF_SIZE);
-		
-		//GPIO_SetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√∏ﬂ£¨µ∆√
 	}
-	GPIO_SetBits(GPIOA,GPIO_Pin_1);//PA1  …Ë÷√∏ﬂ£¨µ∆√
 }
 #endif // USE_DMA_SPI
 /*********************************************END OF FILE********************************************/
